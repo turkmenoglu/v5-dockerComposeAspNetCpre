@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   ms-sql-server:
     image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
@@ -9,7 +9,10 @@ services:
     ports:
       - "1433:1433"
   book-app:
-    build: .
+    build: 
+      context: .
+      args:
+        buildnbinfo: 1
     environment:
       DbServer: "ms-sql-server"
       DbPort: "1433"

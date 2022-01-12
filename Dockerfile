@@ -10,6 +10,9 @@ RUN dotnet restore
 COPY . ./
 RUN dotnet publish -c Release -o out
 
+ARG buildnbinfo
+RUN echo "build number info: ${buildnbinfo} "
+
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/sdk:6.0
 WORKDIR /app
